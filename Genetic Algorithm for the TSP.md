@@ -1092,7 +1092,7 @@ draw_histogram(crossover_generations[-1])
 
     Map(center=[39.450730374, -93.46520434000001], controls=(ZoomControl(options=['position', 'zoom_in_text', 'zoo…
 
-![png](img/11.png)
+![png](img/14.png)
 
 ![png](img/output_62_1.png)
 
