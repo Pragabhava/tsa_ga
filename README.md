@@ -1,2 +1,5 @@
 # tsa_ga
-The Traveling Salesman Problem with Genetic Algorithms
+
+This is my version of the traveling salesman problem using randomness and a genetic algorithm.
+
+Have fun!
