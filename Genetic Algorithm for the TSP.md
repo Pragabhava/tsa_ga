@@ -96,7 +96,7 @@ display(m)
 
     Map(center=[38.8885877, -94.88133620000002], controls=(ZoomControl(options=['position', 'zoom_in_text', 'zoom_…
 
-![](img/01.png)
+![png](img/01.png)
 
 
 What can we do now? Well, we could start by choosing some random routes, and see how well they perform. Befor we do so, let's clarify what do we mean by "route":
@@ -169,6 +169,7 @@ draw_map(states_sample, start_state=start_state, route=route)
 
     Map(center=[38.8885877, -94.88133620000002], controls=(ZoomControl(options=['position', 'zoom_in_text', 'zoom_…
 
+![png](img/02.png)
 
 It seems like a very complicated route. Let's calculate it's absolute value distance (for speed)
 
@@ -217,6 +218,7 @@ draw_map(states_sample, start_state=start_state, route=random_routes[0])
 
     Map(center=[38.8885877, -94.88133620000002], controls=(ZoomControl(options=['position', 'zoom_in_text', 'zoom_…
 
+![png](img/03.png)
 
 Surely looks better. Let's see how the distance is distributed among our random sample.
 
@@ -237,7 +239,7 @@ plt.show()
 ```
 
 
-![png](output_24_0.png)
+![png](img/output_24_0.png)
 
 
 By the look of it, it seems that we surely got a good route but, is there room for improvement?
@@ -351,6 +353,7 @@ draw_map(states_sample, start_state=start_state, route=swaped_routes[0])
 
     Map(center=[38.8885877, -94.88133620000002], controls=(ZoomControl(options=['position', 'zoom_in_text', 'zoom_…
 
+![png](img/04.png)
 
 ### This is fantastic!
 
@@ -385,7 +388,7 @@ plt.show()
 ```
 
 
-![png](output_34_0.png)
+![png](img/output_34_0.png)
 
 
 From this histogram, and the route itself, we can see that **we've reached the global minimum**.
@@ -487,12 +490,13 @@ draw_histogram(routes)
 
     Map(center=[39.450730374, -93.46520434000001], controls=(ZoomControl(options=['position', 'zoom_in_text', 'zoo…
 
+![png](img/05.png)
 
     Best distance: 999.1837405999997
 
 
 
-![png](output_40_2.png)
+![png](img/output_40_2.png)
 
 
 Next, let's do our random 'mutations'
@@ -549,12 +553,13 @@ draw_histogram([refined_routes, routes], density=True)
 
     Map(center=[39.450730374, -93.46520434000001], controls=(ZoomControl(options=['position', 'zoom_in_text', 'zoo…
 
+![png](img/06.png)
 
     Best distance: 409.11710260000007
 
 
 
-![png](output_43_2.png)
+![png](img/output_43_2.png)
 
 
 ### A fantastic improvement!
@@ -597,6 +602,7 @@ draw_map(states, start_state=start_state, route=parents[1])
 
     Map(center=[39.450730374, -93.46520434000001], controls=(ZoomControl(options=['position', 'zoom_in_text', 'zoo…
 
+![png](img/07.png)
 
     Parent 1 distance: 496.68
 
@@ -604,6 +610,7 @@ draw_map(states, start_state=start_state, route=parents[1])
 
     Map(center=[39.450730374, -93.46520434000001], controls=(ZoomControl(options=['position', 'zoom_in_text', 'zoo…
 
+![png](img/08.png)
 
 To cross them over, we are going to chose a dominant *trait*, which will define a *gene*, i.e. a 3 conected cities piece of route, which in turn will go differently *expressed* (randomly swaped) into the offspring, whose sequence will be the one of the recessive parent alogn with this expresion. Also, we add a 10% chance of gene mutation.
 
@@ -653,6 +660,7 @@ draw_map(states, start_state=start_state, route=new_offspring)
 
     Map(center=[39.450730374, -93.46520434000001], controls=(ZoomControl(options=['position', 'zoom_in_text', 'zoo…
 
+![png](img/09.png)
 
 We can see the offspring looks like parent 1 and improves travel in the east cost. Let's do one generation and see if we get a better offsrping.
 
@@ -706,9 +714,9 @@ draw_histogram([refined_routes, next_generation], density=True)
 
     Map(center=[39.450730374, -93.46520434000001], controls=(ZoomControl(options=['position', 'zoom_in_text', 'zoo…
 
+![png](img/10.png)
 
-
-![png](output_51_2.png)
+![png](img/output_51_2.png)
 
 
 We did improve overall route distance, but we lost some of our finests. Thats because by choosing randomly, we are heavily drawn to pick from the mean of the parents distribution.
@@ -789,9 +797,9 @@ draw_histogram([refined_routes, chosen_generation], density=True)
 
     Map(center=[39.450730374, -93.46520434000001], controls=(ZoomControl(options=['position', 'zoom_in_text', 'zoo…
 
+![png](img/11.png)
 
-
-![png](output_53_2.png)
+![png](img/output_53_2.png)
 
 
 This distribution suggests that we are getting closer to the global minimum. Let's try to do some more generations, where, to avoid inbreeding, we are droping the 10% least fitted routes and introducing 5% fully random and 5% refined foreing routes to the pool on each generation.
@@ -894,9 +902,9 @@ draw_histogram(generations[-1])
 
     Map(center=[39.450730374, -93.46520434000001], controls=(ZoomControl(options=['position', 'zoom_in_text', 'zoo…
 
+![png](img/12.png)
 
-
-![png](output_56_1.png)
+![png](img/output_56_1.png)
 
 
 This is gantastic. Altough, there is a cross there in the midwest that is bothering me, and it has been passed from generation to generation. This shows how inbreeding works. Let's see if we can get rid of it with a fresh new pool.
@@ -1000,9 +1008,9 @@ draw_histogram(parallel_generations[-1])
 
     Map(center=[39.450730374, -93.46520434000001], controls=(ZoomControl(options=['position', 'zoom_in_text', 'zoo…
 
+![png](img/13.png)
 
-
-![png](output_59_1.png)
+![png](img/output_59_1.png)
 
 
 This parallel path is not as fit as the previous one, but it might have the genetic diversity needed to correct the cross defect. Let's build a new pool and generate new offspring. This time, we give 1/2 chance to pick from one pool vs. 1/2 to pick from the other. To prevent stagnation, we take the 3rd generation from each pool.
@@ -1084,9 +1092,9 @@ draw_histogram(crossover_generations[-1])
 
     Map(center=[39.450730374, -93.46520434000001], controls=(ZoomControl(options=['position', 'zoom_in_text', 'zoo…
 
+![png](img/11.png)
 
-
-![png](output_62_1.png)
+![png](img/output_62_1.png)
 
 
 The cross is still there, but we've improved by almost ten units. Surle a pool with the desired feature would give us the desired result.
