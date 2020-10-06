@@ -96,6 +96,8 @@ display(m)
 
     Map(center=[38.8885877, -94.88133620000002], controls=(ZoomControl(options=['position', 'zoom_in_text', 'zoom_…
 
+![](img/01.png)
+
 
 What can we do now? Well, we could start by choosing some random routes, and see how well they perform. Befor we do so, let's clarify what do we mean by "route":
 > A route will be a closed path of straigh lines that join all capitals toghether
